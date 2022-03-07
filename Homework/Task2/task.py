@@ -1,9 +1,15 @@
+import math
+
 import numpy as np
 import matplotlib.pyplot as plt
 
 
 def function(x):
     return 3 * (x ** 4) + 7 * (x ** 2)
+
+
+def function_2var(x, y):
+    return 3 * (x ** 4) + 7 * (y ** 2)
 
 
 def rectangle_integral(a: int, b: int, count: int):
@@ -88,6 +94,43 @@ def bul_integral(a: int, b: int, count: int):
     return result
 
 
+# TODO: доделать
+def gaussian_quadrature(a: int, b: int, count: int):
+    f_sum = function((a + b) / 2 - (b - a) / (2 * math.sqrt(3))) + \
+            function((a + b) / 2 + (b - a) / (2 * math.sqrt(3)))
+
+    result = (b - a) / 2 * f_sum
+    return result
+
+
+def monte_carlo_method(a: int, b: int, count: int):
+    h = (b - a) / count
+
+    y_sum = 0.0
+    for curr_iter in range(0, count):
+        x = a + h * curr_iter
+        y_sum += function(x)
+
+    result = h * y_sum
+    return result
+
+
+#TODO: доделать
+def monte_carlo_method_2var(ax: int, bx: int, ay: int, by: int, count: int):
+    dx = (bx - ax) / count
+    dy = (by - ay) / count
+
+    f_sum = 0.0
+    for i in range(0, count):
+        for j in range(0, count):
+            x = ax + dx * i
+            y = ay + dy * j
+            f_sum += function_2var(x, y)
+
+    result = (dx + dy) * f_sum
+    return result
+
+
 def draw_functions():
     x_arr = np.arange(1, 50)
 
@@ -123,20 +166,29 @@ def draw_functions():
 if __name__ == '__main__':
     a = 0
     b = 3
-    step = 100000
+    count = 100000
     draw_functions()
 
     print("Метод прямоугольников: {}".format(
-        rectangle_integral(a, b, step)))
+        rectangle_integral(a, b, count)))
 
     print("Метод трапеций: {}".format(
-        trapezoid_integral(a, b, step)))
+        trapezoid_integral(a, b, count)))
 
     print("Метод парабол (Симпсона): {}".format(
-        parabolic_integral(a, b, step)))
+        parabolic_integral(a, b, count)))
 
     print("Метод кубических парабол: {}".format(
-        cube_parabolic_integral(a, b, step)))
+        cube_parabolic_integral(a, b, count)))
 
     print("Метод Буля: {}".format(
-        bul_integral(a, b, step)))
+        bul_integral(a, b, count)))
+
+    print("Метод Гаусса: {}".format(
+        gaussian_quadrature(a, b, count)))
+
+    print("Метод Монте-Карло: {}".format(
+        monte_carlo_method(a, b, count)))
+
+    print("Метод Монте-Карло для 2х переменных: {}".format(
+        monte_carlo_method_2var(0, 2, 0, 1, 100)))
