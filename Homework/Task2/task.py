@@ -94,8 +94,57 @@ def bul_integral(a: int, b: int, count: int):
     return result
 
 
-# TODO: доделать
-def gaussian_quadrature(a: int, b: int, count: int):
+def gaussian_quadrature_2(a: int, b: int, count: int):
+    f_sum = function((a + b) / 2 + (b - a) / 2 * (-0.577350)) + \
+            function((a + b) / 2 + (b - a) / 2 * 0.5773503)
+
+    result = (b - a) / 2 * f_sum
+    return result
+
+
+def gaussian_quadrature_3(a: int, b: int, count: int):
+    f_sum = function((a + b) / 2 + (b - a) / 2 * -0.7745967) * 0.5555556 + \
+            function((a + b) / 2) * 0.8888889 + \
+            function((a + b) / 2 + (b - a) / 2 * 0.7745967) * 0.5555556
+
+    result = (b - a) / 2 * f_sum
+    return result
+
+
+def gaussian_quadrature_4(a: int, b: int, count: int):
+    f_sum = function((a + b) / 2 + (b - a) / 2 * (-0.8611363)) * 0.3478548 + \
+            function((a + b) / 2 + (b - a) / 2 * (-0.3399810)) * 0.6521451 + \
+            function((a + b) / 2 + (b - a) / 2 * 0.3399810) * 0.6521451 + \
+            function((a + b) / 2 + (b - a) / 2 * 0.8611363) * 0.3478548
+
+    result = (b - a) / 2 * f_sum
+    return result
+
+
+def gaussian_quadrature_5(a: int, b: int, count: int):
+    f_sum = function((a + b) / 2 + (b - a) / 2 * -0.9061798) * 0.2369269 + \
+            function((a + b) / 2 + (b - a) / 2 * -0.5384693) * 0.4786287 + \
+            function((a + b) / 2) * 0.5688888 + \
+            function((a + b) / 2 + (b - a) / 2 * 0.5384693) * 0.4786287 + \
+            function((a + b) / 2 + (b - a) / 2 * 0.9061798) * 0.2369269
+
+    result = (b - a) / 2 * f_sum
+    return result
+
+
+def gaussian_quadrature_6(a: int, b: int, count: int):
+    f_sum = function((a + b) / 2 + (b - a) / 2 * (-0.9324700)) * 0.1713245 + \
+            function((a + b) / 2 + (b - a) / 2 * (-0.6612094)) * 0.3607616 + \
+            function((a + b) / 2 + (b - a) / 2 * (-0.2386142)) * 0.4679140 + \
+            function((a + b) / 2 + (b - a) / 2 * 0.2386142) * 0.4679140 + \
+            function((a + b) / 2 + (b - a) / 2 * 0.6612094) * 0.3607616 + \
+            function((a + b) / 2 + (b - a) / 2 * 0.9324700) * 0.1713245
+
+    result = (b - a) / 2 * f_sum
+    return result
+
+
+def gaussian_quadrature_2(a: int, b: int, count: int):
     f_sum = function((a + b) / 2 - (b - a) / (2 * math.sqrt(3))) + \
             function((a + b) / 2 + (b - a) / (2 * math.sqrt(3)))
 
@@ -115,7 +164,7 @@ def monte_carlo_method(a: int, b: int, count: int):
     return result
 
 
-#TODO: доделать
+# TODO: проверить
 def monte_carlo_method_2var(ax: int, bx: int, ay: int, by: int, count: int):
     dx = (bx - ax) / count
     dy = (by - ay) / count
@@ -127,7 +176,7 @@ def monte_carlo_method_2var(ax: int, bx: int, ay: int, by: int, count: int):
             y = ay + dy * j
             f_sum += function_2var(x, y)
 
-    result = (dx + dy) * f_sum
+    result = (dx * dy) * f_sum
     return result
 
 
@@ -184,11 +233,19 @@ if __name__ == '__main__':
     print("Метод Буля: {}".format(
         bul_integral(a, b, count)))
 
-    print("Метод Гаусса: {}".format(
-        gaussian_quadrature(a, b, count)))
+    print("Метод Гаусса(2): {}".format(
+        gaussian_quadrature_2(a, b, count)))
+    print("Метод Гаусса(3): {}".format(
+        gaussian_quadrature_3(a, b, count)))
+    print("Метод Гаусса(4): {}".format(
+        gaussian_quadrature_4(a, b, count)))
+    print("Метод Гаусса(5): {}".format(
+        gaussian_quadrature_5(a, b, count)))
+    print("Метод Гаусса(6): {}".format(
+        gaussian_quadrature_6(a, b, count)))
 
     print("Метод Монте-Карло: {}".format(
         monte_carlo_method(a, b, count)))
 
     print("Метод Монте-Карло для 2х переменных: {}".format(
-        monte_carlo_method_2var(0, 2, 0, 1, 100)))
+        monte_carlo_method_2var(0, 2, 0, 1, 500)))
