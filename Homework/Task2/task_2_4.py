@@ -1,3 +1,6 @@
+import random
+
+
 def function(x):
     return 3 * (x ** 4) + 7 * (x ** 2)
 
@@ -11,7 +14,7 @@ def monte_carlo_method(a: int, b: int, count: int):
 
     y_sum = 0.0
     for curr_iter in range(0, count):
-        x = a + h * curr_iter
+        x = random.uniform(a, b)
         y_sum += function(x)
 
     result = h * y_sum
@@ -25,8 +28,8 @@ def monte_carlo_method_2var(ax: int, bx: int, ay: int, by: int, count: int):
     f_sum = 0.0
     for i in range(0, count):
         for j in range(0, count):
-            x = ax + dx * i
-            y = ay + dy * j
+            x = random.uniform(ax, bx)
+            y = random.uniform(ay, by)
             f_sum += function_2var(x, y)
 
     result = (dx * dy) * f_sum

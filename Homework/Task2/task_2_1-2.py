@@ -31,11 +31,12 @@ def trapezoid_integral(a: int, b: int, count: int):
 
 
 def parabolic_integral(a: int, b: int, count: int):
+    if count % 2 != 0:
+        count += 1
+
     h = (b - a) / count
 
-    y_sum = function(a)
-    if count % 2 == 0:
-        y_sum += function(b)
+    y_sum = function(a) + function(b)
 
     for curr_iter in range(1, count, 2):
         x = a + h * curr_iter
@@ -50,6 +51,9 @@ def parabolic_integral(a: int, b: int, count: int):
 
 
 def cube_parabolic_integral(a: int, b: int, count: int):
+    if count % 2 != 0:
+        count += 1
+
     h = (b - a) / count
 
     y_sum = function(a) + function(b)
@@ -70,6 +74,9 @@ def cube_parabolic_integral(a: int, b: int, count: int):
 
 
 def bul_integral(a: int, b: int, count: int):
+    if count % 2 != 0:
+        count += 1
+
     h = (b - a) / count
 
     y_sum = 7 * function(a) + 7 * function(b)
