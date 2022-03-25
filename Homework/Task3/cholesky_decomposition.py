@@ -1,8 +1,10 @@
 import numpy as np
 
 
-def cholesky_decomposition(A, L):
+def cholesky_decomposition(A):
     dimension_size = len(A)
+
+    L = np.array([[0.0] * dimension_size for row in range(dimension_size)])
 
     for i in range(dimension_size):
         for j in range(i + 1):
@@ -13,6 +15,8 @@ def cholesky_decomposition(A, L):
                 L[i][i] = (A[i][i] - summ) ** 0.5
             else:
                 L[i][j] = (1.0 / L[j][j] * (A[i][j] - summ))
+
+    return L
 
 
 def forward_substitution(L, B):
@@ -35,6 +39,19 @@ def back_substitution(U, Y):
     return x
 
 
+def cholecky_solution(A, B):
+    L = cholesky_decomposition(A)
+    U = L.transpose()
+    # print(L)
+    # print(U)
+    y = forward_substitution(L, B)
+    # print(y)
+    x = back_substitution(U, y)
+    # print(x)
+
+    return x
+
+
 if __name__ == "__main__":
     A = [
         [6, 15, 55],
@@ -42,16 +59,6 @@ if __name__ == "__main__":
         [55, 225, 979],
     ]
     B = [76, 295, 1259]
-    L = np.array([
-        [0.0, 0.0, 0.0],
-        [0.0, 0.0, 0.0],
-        [0.0, 0.0, 0.0],
-    ])
-    cholesky_decomposition(A, L)
-    U = L.transpose()
-    print(L)
-    print(U)
-    y = forward_substitution(L, B)
-    print(y)
-    x = back_substitution(U, y)
+
+    x = cholecky_solution(A, B)
     print(x)

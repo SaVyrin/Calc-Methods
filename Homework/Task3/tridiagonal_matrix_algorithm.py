@@ -20,6 +20,12 @@ def substitution(c, d):
     return x
 
 
+def tdma_solve(a, b, c, d):
+    run_through(a, b, c, d)
+    x = substitution(c, d)
+    return x
+
+
 if __name__ == "__main__":
     matrix = [
         [1, 8, 0, 0, 0], [1],
@@ -33,6 +39,5 @@ if __name__ == "__main__":
     c = [8, 2, 2, 1, 0]
     d = [1, 5, 3, 4, 7]
 
-    run_through(a, b, c, d)
-    x = substitution(c, d)
+    x = tdma_solve(a, b, c, d)
     print(x)
