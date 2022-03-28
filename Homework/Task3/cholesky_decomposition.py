@@ -1,6 +1,16 @@
 import numpy as np
 
 
+def is_pos_def(A):
+    return np.all(np.linalg.eigvals(A) > 0)
+
+def symmetric(A):
+    A_Not_transp = np.array(A)
+    A_transp = A_Not_transp.transpose()
+
+    return np.allclose(A_Not_transp, A_transp)
+
+
 def cholesky_decomposition(A):
     dimension_size = len(A)
 
@@ -40,6 +50,14 @@ def back_substitution(U, Y):
 
 
 def cholecky_solution(A, B):
+    if not is_pos_def(A):
+        print("Not positive definite matrix")
+        return
+
+    if not symmetric(A):
+        print("Not symmetric")
+        return
+
     L = cholesky_decomposition(A)
     U = L.transpose()
     # print(L)

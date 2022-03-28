@@ -2,7 +2,7 @@ from unittest import TestCase
 
 import numpy as np
 
-from Homework.Task3.cholesky_decomposition import cholecky_solution, cholesky_decomposition
+from Homework.Task3.cholesky_decomposition import cholesky_decomposition, cholecky_solution
 
 
 class Test(TestCase):
