@@ -9,7 +9,7 @@ class CubicSpline:
         self.y = y
 
         h = np.diff(x)
-        # check for zero values and replacing them with epsilon
+        # checking for zero values and replacing them with epsilon
         # to avoid division to zero
         h[h == 0] = 1e-7
         self.nx = len(x)
