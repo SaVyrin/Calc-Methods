@@ -12,8 +12,8 @@ def draw_function(lagrange_points, newton_points):
     newton_y = newton_points[-1]
 
     fig, ax = plt.subplots()
-    ax.plot(lagrange_x, lagrange_y, label="rectangle_integral")
-    ax.plot(newton_x, newton_y, label="rectangle_integral")
+    ax.plot(lagrange_x, lagrange_y, label="lagrange integral")
+    ax.plot(newton_x, newton_y, label="newton integral")
     # ax.set(xlabel='x', ylabel='f', title='5 * (np.sin(x) - 3) ** 2 + 1')
     ax.grid()
 
@@ -21,8 +21,8 @@ def draw_function(lagrange_points, newton_points):
 
 
 if __name__ == "__main__":
-    x = [-1.5, -0.75, 0, 0.75, 1.5, 2.3425, 3.1, 4.0005]
-    y = [-14.1014, -0.931596, 0, 0.931596, 14.1014, 3.433, 2.535, -10.424]
+    x = [-3, -2, 0, 2, 3]
+    y = [-14.523, -3.43, 0, 3.43, 14.523]
 
     lagrange = LagrangeInterpolation(x, y)
     lagrange_points = lagrange.get_result_points()

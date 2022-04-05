@@ -5,7 +5,7 @@ class LagrangeInterpolation:
     def __init__(self, given_x, given_y):
         self._given_x = given_x
         self._given_y = given_y
-        self._interpolation_points_count = 10000
+        self._interpolation_points_count = 500
 
     def get_result_points(self):
         result_x, result_y = self._interpolate()
