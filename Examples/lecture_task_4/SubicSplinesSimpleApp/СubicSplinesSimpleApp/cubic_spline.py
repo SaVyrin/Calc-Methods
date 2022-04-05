@@ -1,7 +1,8 @@
 import numpy as np
 import bisect
 
-from Homework.Task3.cholesky_decomposition import back_substitution
+from Homework.Task3.cholesky_decomposition import back_substitution, forward_substitution
+from Homework.Task3.tridiagonal_matrix_algorithm import tdma_solve
 
 
 class CubicSpline:
@@ -21,7 +22,18 @@ class CubicSpline:
         b = self.__calculate_b(h)
 
         # self.c = np.linalg.solve(a, b)
-        self.c = back_substitution(a, b)
+        a1 = [0]
+        a2 = []
+        a3 = []
+        for row in range(len(a)):
+            if row - 1 >= 0:
+                a1.append(a[row][row - 1])
+            a2.append(a[row][row])
+            if row + 1 < len(a):
+                a3.append(a[row][row + 1])
+        a3.append(0)
+
+        self.c = tdma_solve(a1, a2, a3, b)
 
         for i in range(self.nx - 1):
             self.d.append((self.c[i + 1] - self.c[i]) / (3.0 * h[i]))
