@@ -1,6 +1,8 @@
 import numpy as np
 import bisect
 
+from Homework.Task3.cholesky_decomposition import back_substitution
+
 
 class CubicSpline:
     def __init__(self, x, y):
@@ -17,7 +19,9 @@ class CubicSpline:
         self.a = [iy for iy in y]
         a = self.__calculate_a(h)
         b = self.__calculate_b(h)
-        self.c = np.linalg.solve(a, b)
+
+        # self.c = np.linalg.solve(a, b)
+        self.c = back_substitution(a, b)
 
         for i in range(self.nx - 1):
             self.d.append((self.c[i + 1] - self.c[i]) / (3.0 * h[i]))
