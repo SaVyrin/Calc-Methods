@@ -5,6 +5,9 @@ from cubic_spline_2d import *
 def calculate_2d_spline_interpolation(x, y, num=100):
     cubic_spline_2d = CubicSpline2D(x, y)
     params = np.linspace(cubic_spline_2d.params[0], cubic_spline_2d.params[-1], num + 1)[:-1]
+    # change last element to cubic_spline_3d.params last element
+    # to compute value in last point
+    params[-1] = cubic_spline_2d.params[-1]
 
     result_x, result_y = [], []
     for param in params:
