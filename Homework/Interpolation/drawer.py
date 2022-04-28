@@ -1,7 +1,7 @@
-from Homework.Task4.lagrange import LagrangeInterpolation
+from Homework.Interpolation.lagrange import LagrangeInterpolation
 import matplotlib.pyplot as plt
 
-from Homework.Task4.newton import NewtonInterpolation
+from Homework.Interpolation.newton import NewtonInterpolation
 
 
 def draw_function(lagrange_points, newton_points):

@@ -7,7 +7,7 @@ from Examples.lecture_task_4.SubicSplinesSimpleApp.СubicSplinesSimpleApp.cubic_
 def calculate_3d_spline_interpolation(x, y, z, num=100):
     cubic_spline_3d = CubicSpline3D(x, y, z)
     params = np.linspace(cubic_spline_3d.params[0], cubic_spline_3d.params[-1], num + 1)[:-1]
-    # change last element to cubic_spline_3d.params last element
+    # change last element to cubic_spline_3d.params[-1] last element
     # to compute value in last point
     params[-1] = cubic_spline_3d.params[-1]
 

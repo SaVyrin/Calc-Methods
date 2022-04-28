@@ -10,8 +10,10 @@
   <component name="PyNamespacePackagesService">
     <option name="namespacePackageFolders">
       <list>
-        <option value="$MODULE_DIR$/Homework/Task2" />
-        <option value="$MODULE_DIR$/Homework/Task4" />
+        <option value="$MODULE_DIR$/Homework/Numerical_integration" />
+        <option value="$MODULE_DIR$/Homework/Interpolation" />
+        <option value="$MODULE_DIR$/Homework/Task5" />
+        <option value="$MODULE_DIR$/Homework" />
       </list>
     </option>
   </component>

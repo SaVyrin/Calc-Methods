@@ -2,7 +2,7 @@ from unittest import TestCase
 import numpy as np
 import numpy.testing
 
-from Homework.Task3.tridiagonal_matrix_algorithm import tdma_solve
+from Homework.System_of_linear_equations.tridiagonal_matrix_algorithm import tdma_solve
 
 
 class TestTDMA(TestCase):

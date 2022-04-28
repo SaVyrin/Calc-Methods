@@ -1,8 +1,7 @@
 import numpy as np
 import bisect
 
-from Homework.Task3.cholesky_decomposition import back_substitution, forward_substitution
-from Homework.Task3.tridiagonal_matrix_algorithm import tdma_solve
+from Homework.System_of_linear_equations.tridiagonal_matrix_algorithm import tdma_solve
 
 
 class CubicSpline:
