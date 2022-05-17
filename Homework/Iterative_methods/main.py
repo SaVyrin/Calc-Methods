@@ -1,8 +1,8 @@
 import numpy.linalg
 
-from Homework.Task5.drawer import draw_functions
-from Homework.Task5.gauss_seidel import gauss_seidel_method, solve_gauss_seidel
-from Homework.Task5.jacobi import jacobi_method, solve_jacobi
+from drawer import draw_functions
+from gauss_seidel import solve_gauss_seidel
+from jacobi import solve_jacobi
 
 
 def sdf():

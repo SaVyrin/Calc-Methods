@@ -1,8 +1,8 @@
 import numpy as np
 from matplotlib import pyplot as plt
 
-from Homework.Task5.gauss_seidel import gauss_seidel_method, solve_gauss_seidel
-from Homework.Task5.jacobi import jacobi_method, solve_jacobi
+from Homework.Iterative_methods.gauss_seidel import solve_gauss_seidel
+from Homework.Iterative_methods.jacobi import solve_jacobi
 
 
 def get_error_value(actual_result, expected_result):

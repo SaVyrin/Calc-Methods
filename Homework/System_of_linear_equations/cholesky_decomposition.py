@@ -60,12 +60,9 @@ def cholecky_solution(A, B):
 
     L = cholesky_decomposition(A)
     U = L.transpose()
-    # print(L)
-    # print(U)
+
     y = forward_substitution(L, B)
-    # print(y)
     x = back_substitution(U, y)
-    # print(x)
 
     return x
 

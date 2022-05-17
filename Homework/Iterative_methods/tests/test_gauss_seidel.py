@@ -2,7 +2,7 @@ from unittest import TestCase
 
 import numpy.testing
 
-from Homework.Task5.gauss_seidel import gauss_seidel_method
+from Homework.Iterative_methods.gauss_seidel import gauss_seidel_method
 
 
 class Test(TestCase):

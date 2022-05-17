@@ -2,7 +2,7 @@ from unittest import TestCase
 
 import numpy
 
-from Homework.Task5.jacobi import jacobi_method
+from Homework.Iterative_methods.jacobi import jacobi_method
 
 
 class Test(TestCase):
